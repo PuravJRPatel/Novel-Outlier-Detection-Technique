@@ -23,7 +23,9 @@ To test the effectiveness of LUNAR compared to other popular local outlier metho
 
 ### Proposed Methodology
 As discussed above, LUNAR’s strength lies in its ability to add the property of learnability to the traditional local outlier methods and unify them with a framework using graphical neural networks. ECOD, on the other hand, is a non-parametric method that is very efficient and accurate, although it does not perform well when it comes to local outliers. Hence, an ensemble that aims to bring their strengths together is able to establish a better performance on accuracy, ROC, and AUC under the ROC. 
-![Copy of Ensemble - Page 1](https://github.com/user-attachments/assets/83fc775d-ba61-4489-8589-ba24a5c85366)
+
+![image7](https://github.com/user-attachments/assets/882e81f9-15be-4611-a5c2-ad3e78c5412a)
+
 The dataset depicted in the figure above undergoes label removal and shuffling to facilitate its suitability for unsupervised learning. Unsupervised learning is a training method used when ground truth is unavailable, making it more suitable for anomaly detection. 
 This shuffled data is then normalised using the standard scaler from the Python scikit-learn library. StandardScaler uses the z-score normalisation formula in order to make the dataset look like normally distributed data. StandardScaler is sensitive to outliers; hence, it does not remove them from the dataset and does not hinder the process of anomaly detection by ECOD and LUNAR. 
 The normalised data is then separately subjected to the two chosen outlier detection methods, LUNAR and ECOD. Both LUNAR and ECOD are the base models of our ensemble, built using the PyOD library, a comprehensive and easy-to-use Pyhon library that provides a plethora of anomaly detection algorithms. The decision_function(X) attribute of the fitted algorithms is then used in this case to obtain the raw outlier score of X of the fitted detector. The raw scores of both LUNAR and ECOD are then merged with the original labels of the dataset that were stripped off at the first stage.
